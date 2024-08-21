@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_properties.dart';
-import 'package:frontend/screens/main/main_page.dart';
+// import 'package:frontend/screens/main/main_page.dart';
 
 class IntroPage extends StatefulWidget {
   @override
@@ -73,13 +73,7 @@ class _IntroPageState extends State<IntroPage> {
                     Opacity(
                       opacity: pageIndex != 2 ? 1.0 : 0.0,
                       child: TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => MainPage(),
-                            ),
-                          );
-                        },
+                        onPressed: () {},
                         child: Text(
                           'SKIP',
                           style: TextStyle(
@@ -107,13 +101,7 @@ class _IntroPageState extends State<IntroPage> {
                             ),
                           )
                         : TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                  builder: (context) => MainPage(),
-                                ),
-                              );
-                            },
+                            onPressed: () {},
                             child: Text(
                               'FINISH',
                               style: TextStyle(

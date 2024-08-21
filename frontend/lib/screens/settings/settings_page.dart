@@ -1,6 +1,6 @@
 import 'package:frontend/app_properties.dart';
 import 'package:frontend/custom_background.dart';
-import 'package:frontend/screens/auth/login_page.dart';
+// import 'package:frontend/screens/auth/login_page.dart';
 import 'package:frontend/screens/settings/change_password_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -93,9 +93,7 @@ class SettingsPage extends StatelessWidget {
                             ListTile(
                               title: Text('Sign out'),
                               leading: Image.asset('assets/icons/sign_out.png'),
-                              onTap: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (_) => LoginPage())),
+                              onTap: () => {},
                             ),
                           ],
                         ),

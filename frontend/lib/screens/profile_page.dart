@@ -1,10 +1,8 @@
 import 'package:frontend/app_properties.dart';
 import 'package:frontend/screens/details_page.dart';
-import 'package:frontend/screens/emergency_contacts_page.dart';
 import 'package:frontend/screens/faq_page.dart';
 import 'package:frontend/screens/settings/settings_page.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/temp_details_page.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -56,8 +54,7 @@ class ProfilePage extends StatelessWidget {
                     height: 30,
                   ),
                   trailing: Icon(Icons.chevron_right, color: green),
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => EmergencyContactsPage())),
+                  onTap: () => {},
                 ),
                 Divider(),
                 ListTile(
@@ -71,8 +68,7 @@ class ProfilePage extends StatelessWidget {
                     height: 30,
                   ),
                   trailing: Icon(Icons.chevron_right, color: green),
-                  onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => TempDetailsPage())),
+                  onTap: () => {},
                 ),
                 Divider(),
                 ListTile(
