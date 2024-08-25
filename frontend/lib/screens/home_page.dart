@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/about.dart';
+import 'package:frontend/screens/daily_tip_page.dart';
+import 'package:frontend/screens/emergency_page.dart';
+import 'package:frontend/screens/settings_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:frontend/utils/utils.dart';
-import 'package:frontend/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -152,27 +153,51 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                         // Data Rows
-                        for (var device in AppData.smartDevices.asMap().entries)
+                        for (var option
+                            in AppData.liveSelectOptions.asMap().entries)
                           TableRow(
                             decoration: BoxDecoration(
-                              color: device.key.isOdd
+                              color: option.key.isOdd
                                   ? Colors.green.shade50
                                   : Colors.white,
                             ),
                             children: [
                               InkWell(
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => AboutScreen(),
-                                      ),
-                                    );
+                                    switch (option.value) {
+                                      case "Settings":
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                SettingsScreen(),
+                                          ),
+                                        );
+                                        break;
+                                      case "Daily Tips":
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                DailyTipsPage(),
+                                          ),
+                                        );
+                                        break;
+                                      case "Emergency Call":
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                EmergencyCallScreen(),
+                                          ),
+                                        );
+                                        break;
+                                    }
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),
                                     child: Text(
-                                      device.value[0], // Device Name
+                                      option.value,
                                       style: TextStyle(
                                         fontSize: 16,
                                       ),

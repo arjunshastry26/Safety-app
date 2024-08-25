@@ -1,7 +1,7 @@
 import 'package:frontend/app_properties.dart';
 import 'package:frontend/screens/details_page.dart';
 import 'package:frontend/screens/faq_page.dart';
-import 'package:frontend/screens/settings/settings_page.dart';
+// import 'package:frontend/screens/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -81,8 +81,7 @@ class ProfilePage extends StatelessWidget {
                     height: 30,
                   ),
                   trailing: Icon(Icons.chevron_right, color: green),
-                  onTap: () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => SettingsPage())),
+                  onTap: () => {},
                 ),
                 Divider(),
                 ListTile(
