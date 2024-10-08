@@ -1,29 +1,12 @@
+// alertRoutes.js
 const express = require('express');
+const { sendSOSAlert, getAlerts } = require('../controllers/alertController'); // Ensure this path is correct
 const router = express.Router();
-const authController = require('../controllers/authController');
 
-// Send OTP
-router.post('/send-otp', authController.sendOtp);
+// Route to send SOS alert
+router.post('/send', sendSOSAlert);
 
-// Verify OTP
-router.post('/verify-otp', authController.verifyOtp);
-
-// Signup
-router.post('/signup', authController.signup);
-
-// Finish registration
-router.post('/finish-registration', authController.finishRegistration);
-
-// Login
-router.post('/login', authController.login);
-
-// Update user location (requires user to be authenticated)
-router.post('/update-location', authController.updateLocation);
-
-// Get current location (requires user to be authenticated)
-router.get('/get-location', authController.getLocation);
-
-// Reset SM Pin
-router.post('/reset-pin', authController.resetPin);
+// Route to get all alerts for the user
+router.get('/', getAlerts);
 
 module.exports = router;
