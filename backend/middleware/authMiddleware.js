@@ -1,18 +1,28 @@
-const admin = require('../config/firebase').admin;
+const { db } = require('../config/firebase');
 
-// Middleware to authenticate user
+// Middleware to authenticate user based on phone number
 exports.authenticateUser = async (req, res, next) => {
-  const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
-  
-  if (!token) {
-    return res.status(401).send('Authorization token missing');
+  const { phoneNumber } = req.body; // Assuming phone number is passed in the request body
+
+  if (!phoneNumber) {
+    return res.status(400).send('Phone number is required for authentication');
   }
 
   try {
-    const decodedToken = await admin.auth().verifyIdToken(token);
-    req.user = decodedToken;
+    // Check if the provided phone number exists in the 'users' collection in the database
+    const userSnapshot = await db.collection('users').where('phoneNumber', '==', phoneNumber).get();
+
+    if (userSnapshot.empty) {
+      return res.status(404).send('User with the provided phone number does not exist.');
+    }
+
+    // Attach the user data to the request object for further processing
+    req.user = userSnapshot.docs[0].data(); // Store user data in req.user
+
+    // Move to the next middleware or route handler
     next();
   } catch (error) {
-    res.status(401).send('Invalid authorization token');
+    console.error('Error in authenticateUser middleware:', error.message);
+    res.status(500).send('Error authenticating user: ' + error.message);
   }
 };
