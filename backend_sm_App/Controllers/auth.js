@@ -31,6 +31,4 @@ module.exports.resertPIN = (req,res) => {
   } else {
     res.status(404).json({status:false, message:`user not found`});
   }
-} catch (error) {
-  res.status(500).json({status:false, message:`error reseting pin`});
 }

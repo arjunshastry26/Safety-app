@@ -16,7 +16,8 @@ const loc = require('./Controllers/track.js');
 app.post('/signin', auth.signin);
 app.post('/signup', auth.signup);
 app.post('/storeCoordinates', loc.storeCoordinates);
-app.post('/update5seconds', loc.update5seconds);
+app.post('/joinSession', loc.joinSession);
+app.post('/createSession', loc.createSession);
 
 const PORT = 5000;
 server.listen(PORT, () => {
