@@ -3,7 +3,7 @@ const userNumber = 9876543210 //for demo purposes
 
 const accountSid = 1 //process.env.TWILIO_ACCOUNT_SID;
 const authToken = 2 //process.env.TWILIO_AUTH_TOKEN;
-const client = twilio(accountSid, authToken);
+//const client = twilio(accountSid, authToken);
 
 
 module.exports.addContacts = (req,res) => {
@@ -23,14 +23,14 @@ module.exports.addContacts = (req,res) => {
   res.status(200).json({status:true, message:`contact ${contact} stored successfully`});
 }
 
-const isValidUrl = (urlString) => {
-  try {
-    const parsedUrl = new URL(urlString);
-    return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:';
-  } catch (err) {
-    return false;
-  }
-};
+// const isValidUrl = (urlString) => {
+//   try {
+//     const parsedUrl = new URL(urlString);
+//     return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:';
+//   } catch (err) {
+//     return false;
+//   }
+// };
 
 module.exports.sendSOS = async (req,res) => {
   const {latitude, longitude, msg, videoUrl, voiceUrl, user} = req.body;
@@ -70,5 +70,28 @@ try{
 }
 
 }
+
+const safetyTips = [
+  "Always use official ride-hailing apps or registered taxis to avoid scams",
+  " Before entering a cab, match the license plate and driver details with your app.",
+  "Sit in the back seat when using ride-hailing services for added safety.",
+  "Share your live location with a trusted friend while using public transport or taxis.",
+  "Avoid traveling alone at night, especially in unfamiliar or remote areas.",
+  "Plan your route in advance to avoid getting lost or taken on longer routes.",
+  "Check for emergency exits when boarding buses, trains, or ferries.",
+  " If using a rental car, inspect it first and ensure it has a full tank and emergency tools.",
+  " Be cautious of 'helpful strangers' offering unsolicited assistance at transport hubs.",
+  "Avoid unlicensed airport taxis—use official taxi stands or app-based rides.",
+  "If lost, enter a shop or hotel to ask for directions instead of asking strangers on the street.",
+  " If an unknown vehicle follows you, head to the nearest crowded place and call for help."
+]
+
+// function for retuning a random tip from the safetyTips array
+const sendSafetyTip = () => {
+  let index = Math.floor(Math.random() * safetyTips.length);
+  return safetyTips[index];
+}
+
+module.exports = {sendSafetyTip};
 
 
